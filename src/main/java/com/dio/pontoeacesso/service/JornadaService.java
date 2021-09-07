@@ -25,8 +25,8 @@ public class JornadaService {
     public JornadaTrabalho updateJornada(JornadaTrabalho jornadaTrabalho){
         return  jornadaRepository.save(jornadaTrabalho);
     }
-    public void removeJornada(JornadaTrabalho jornadaTrabalho){
-         jornadaRepository.delete(jornadaTrabalho);
+    public void deleteJornada(Long idJornada){
+         jornadaRepository.deleteById(idJornada);
     }
 
     public List<JornadaTrabalho> findAll() {
