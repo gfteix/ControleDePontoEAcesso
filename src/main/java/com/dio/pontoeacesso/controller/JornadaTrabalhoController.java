@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.PostUpdate;
 import java.util.List;
 
-//No service é onde ocorre toda a regra de negócio
-//Repository: persistir os dados depois que o service tratou
 //Controller: Recebe as requisições e manda para o service
+//Service: Onde ocorre toda a regra de negócio
+//Repository: persiste os dados depois que o service tratou
+
 @RestController
 @RequestMapping("/jornada")
 public class JornadaTrabalhoController {
@@ -30,7 +31,7 @@ public class JornadaTrabalhoController {
     @GetMapping("/{idJornada}")
     public ResponseEntity<JornadaTrabalho> getJornadaById(@PathVariable("idJornada") Long idJornada) throws Exception{
         return ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(
-                () -> new Exception("Jornada Não ENcontrada")));
+                () -> new Exception("Jornada Não Encontrada")));
 
     }
     @PutMapping
@@ -38,14 +39,13 @@ public class JornadaTrabalhoController {
         return jornadaService.updateJornada(jornadaTrabalho);
     }
     @DeleteMapping("/{idJornada}")
-    public ResponseEntity<JornadaTrabalho> deleteByID(@PathVariable("idJornada") Long idJornada) throws Exception {
+    public ResponseEntity deleteByID(@PathVariable("idJornada") Long idJornada) throws Exception {
         try {
             jornadaService.deleteJornada(idJornada);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-        return (ResponseEntity<JornadaTrabalho>) ResponseEntity.ok();
+	    return ResponseEntity.ok("Jornada Deletada");
     }
 
 }
