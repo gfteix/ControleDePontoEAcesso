@@ -1,11 +1,8 @@
 package com.dio.pontoeacesso.model;
 
 import lombok.*;
-import javax.persistence.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,6 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Localidade {
     @Id
+    @GeneratedValue
     private long id;
     @ManyToOne
     private NivelAcesso nivelAcesso;

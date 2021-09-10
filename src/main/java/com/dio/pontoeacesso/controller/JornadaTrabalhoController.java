@@ -28,6 +28,7 @@ public class JornadaTrabalhoController {
     public List<JornadaTrabalho> getJornadaList(){
         return jornadaService.findAll();
     }
+
     @GetMapping("/{idJornada}")
     public ResponseEntity<JornadaTrabalho> getJornadaById(@PathVariable("idJornada") Long idJornada) throws Exception{
         return ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(

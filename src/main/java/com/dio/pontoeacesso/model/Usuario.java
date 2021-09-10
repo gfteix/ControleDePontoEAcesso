@@ -1,6 +1,9 @@
 package com.dio.pontoeacesso.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import javax.persistence.Entity;
@@ -17,6 +20,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Usuario {
     @Id
+    @GeneratedValue
     private long id;
     @ManyToOne
     private CategoriaUsuario categoriaUsuario;
@@ -28,7 +32,10 @@ public class Usuario {
     @ManyToOne
     private JornadaTrabalho jornadaTrabalho;
     private BigDecimal tolerancia;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    //2021-09-10T19:24:46
     private LocalDateTime inicioJornada;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime finalJornada;
 
 }

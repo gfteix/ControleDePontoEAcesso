@@ -1,6 +1,7 @@
 package com.dio.pontoeacesso.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,13 +24,16 @@ public class Movimentacao {
     @EqualsAndHashCode
     @Embeddable
     public class MovimentacaoId implements Serializable {
-        private long idMovimento;
-        private long idMUsuario;
+        private long idMovimentacao;
+        private long idUsuario;
     }
-    @Id
+
     @EmbeddedId
     private MovimentacaoId id;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataEntrada;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataSaida;
     private BigDecimal periodo;
     @ManyToOne

@@ -1,6 +1,8 @@
 package com.dio.pontoeacesso.model;
 
 import lombok.*;
+
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ import javax.persistence.Entity;
 @Entity
 public class NivelAcesso {
     @Id
+    @GeneratedValue
     private long id;
     private String descricao;
 

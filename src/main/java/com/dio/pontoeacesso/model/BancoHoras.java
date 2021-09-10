@@ -1,10 +1,9 @@
 package com.dio.pontoeacesso.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import javax.persistence.Id;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -22,6 +21,7 @@ public class BancoHoras {
     @EqualsAndHashCode
     @Embeddable
     public class BancoHorasId implements Serializable {
+        @GeneratedValue
         private long idBancoHoras;
         private long idMovimentacao;
         private long idUsuario;
@@ -29,6 +29,7 @@ public class BancoHoras {
     @Id
     @EmbeddedId
     private BancoHorasId id;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime dataTrabalhada;
     private BigDecimal quantidadeHoras;
     private BigDecimal saldoHoras;
