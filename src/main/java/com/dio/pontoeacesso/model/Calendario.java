@@ -23,6 +23,6 @@ public class Calendario {
     @ManyToOne
     private TipoData tipoData;
     private String descricao;
-    //2021-09-10T19:24:46
+    //YYYY-MM-ddTHH:mm:ss
     private LocalDateTime dataEspecial;
 }

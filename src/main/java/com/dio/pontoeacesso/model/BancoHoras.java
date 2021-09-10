@@ -16,19 +16,13 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 public class BancoHoras {
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @EqualsAndHashCode
-    @Embeddable
-    public class BancoHorasId implements Serializable {
-        @GeneratedValue
-        private long idBancoHoras;
-        private long idMovimentacao;
-        private long idUsuario;
-    }
     @Id
-    @EmbeddedId
-    private BancoHorasId id;
+    @GeneratedValue
+    private long id;
+    @ManyToOne
+    private Movimentacao movimentacao;
+    @ManyToOne
+    private Usuario usuario;
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime dataTrabalhada;
     private BigDecimal quantidadeHoras;

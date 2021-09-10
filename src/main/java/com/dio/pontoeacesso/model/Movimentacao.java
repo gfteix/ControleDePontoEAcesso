@@ -3,6 +3,7 @@ package com.dio.pontoeacesso.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 
@@ -19,18 +20,12 @@ import java.time.LocalDateTime;
 @Entity
 public class Movimentacao {
 
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @EqualsAndHashCode
-    @Embeddable
-    public class MovimentacaoId implements Serializable {
-        private long idMovimentacao;
-        private long idUsuario;
-    }
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    @EmbeddedId
-    private MovimentacaoId id;
-
+    @ManyToOne
+    private Usuario usuario;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataEntrada;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
